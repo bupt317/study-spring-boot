@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cycle</title>
+</head>
+<body>
+<h1>Cycle</h1>
+<hr>
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>名称</th>
+        <th>描述</th>
+        <th>时间</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    <tr th:each="project,stat:${list}">
+        <td th:text="${project.id}"></td>
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.description}"></td>
+        <td th:text="${#dates.format(project.time,'yyyy年MM月dd日 HH:mm:ss')}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

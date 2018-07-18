@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!--该文件用于配置mybatis的自动生成-->
+<generatorConfiguration>
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!-- 开启分页查询 -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin">
+        </plugin>
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+
+        <!--
+          _
+          -关键！ 数据库的配置参数
+          _
+         -->
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost/peixun?useSSL=false"
+                        userId="root"
+                        password="12345">
+        </jdbcConnection>
+
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+
+        <!--
+          _
+          -关键！pojo的生成位置
+          _
+         -->
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.bupt317.study.demo_boot.pojo.mybatis"
+                            targetProject="./src/main/java">
+
+
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--
+          _
+          -关键！ mapper.xml的生成位置
+          _
+         -->
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <!--注意：此处targetProject生成位置为resource下-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="./src/main/resources/">
+
+
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+
+        <!--
+          _
+          -关键！ mapper.java的生成位置
+          _
+         -->
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.bupt317.study.demo_boot.mapper"
+                             targetProject="./src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+        <!--
+          _
+          -关键！ 指定数据库中的指定表
+          _
+         -->
+        <!-- 指定数据库表 -->
+        <table tableName="project_demo">
+        </table>
+
+        <!-- 有些表的字段需要指定java类型
+         <table schema="" tableName="">
+            <columnOverride column="" javaType="" />
+        </table> -->
+    </context>
+</generatorConfiguration>

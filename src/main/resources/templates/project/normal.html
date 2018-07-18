@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Normal</title>
+</head>
+<body>
+<h1>Normal</h1>
+<hr>
+<p>project name:
+    <!--/*@thymesVar id="name" type="java.lang.String"*/-->
+    <span th:text="${name}"></span></p>
+<p>project description:
+    <!--/*@thymesVar id="description" type="java.lang.String"*/-->
+    <span th:text="${description}"></span>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto</title>
+</head>
+<body>
+<h1>Auto</h1>
+<hr>
+<p>project name:
+
+    <!--/*@thymesVar id="project" type="com.bupt317.study.demo_boot.pojo.Project"*/-->
+    <span th:text="${project.name}"></span></p>
+<p>project time:
+    <!--/*@thymesVar id="project" type="com.bupt317.study.demo_boot.pojo.Project"*/-->
+    <span th:text="${#dates.format(project.time,'yyyy年MM月dd日 HH:mm:ss')}"></span>
+</p>
+
+</body>
+</html>
